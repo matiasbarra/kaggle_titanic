@@ -17,14 +17,14 @@ library(data.table) # In this exercise we going to work with data.table instead 
 
 ## Set Path
 loc   <- grep("titanic.R",list.files(recursive=TRUE),value=TRUE)
-iloc  <- which(unlist(gregexpr("/titanic.R",loc)) != -1)
+iloc  <- which(unlist(gregexpr("titanic.R",loc)) != -1)
 myloc <- paste(getwd(),loc[iloc],sep="/")
-setwd(substr(myloc,1,nchar(myloc)-9))
+setwd(substr(myloc,1,nchar(myloc)-nchar("titanic.R")))
 
 
 ## Upload dataSets
-trainSet <- fread("data/train.csv")
-testSet <- fread("data/test.csv")
+trainSet <- fread("../data/train.csv")
+testSet <- fread("../data/test.csv")
 
 # we have to merge both data frames to preprocess data
 # Create a column "type" to separate dataSets in future
